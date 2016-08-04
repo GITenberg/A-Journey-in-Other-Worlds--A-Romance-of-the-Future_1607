@@ -1,0 +1,40 @@
+_repo: A-Journey-in-Other-Worlds--A-Romance-of-the-Future_1607
+_version: 0.0.1
+covers:
+- cover_type: archival
+  image_path: 1607/1607-h/images/ajiow_front_cover.jpg
+  rights: Public domain in the USA.
+  rights_url: http://creativecommons.org/about/pdm
+creator:
+  author:
+    agent_name: Astor, John Jacob
+    birthdate: 1864
+    deathdate: 1912
+    gutenberg_agent_id: '671'
+    url: http://www.gutenberg.org/2009/agents/671
+    wikipedia: http://en.wikipedia.org/wiki/John_Jacob_Astor_IV
+description: "A Journey in Other Worlds: A Romance of the Future is a science fiction\
+  \ novel by John Jacob Astor IV, published in 1894.\n From Wikipedia (CC BY-SA)."
+gutenberg_bookshelf: Science Fiction
+gutenberg_issued: '1999-01-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1607'
+  wikidata: Q4657515
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Jupiter (Planet) -- Fiction'
+- !lcsh 'Manned space flight -- Fiction'
+- !lcsh 'Utopias -- Fiction'
+- !lcc 'PS'
+- !lcsh 'Saturn (Planet) -- Fiction'
+- !lcsh 'Science fiction'
+- !lcsh 'Space ships -- Fiction'
+- GITenberg
+title: 'A Journey in Other Worlds: A Romance of the Future'
+url: http://www.gutenberg.org/ebooks/1607
+wikipedia:
+- https://en.wikipedia.org/wiki/A_Journey_in_Other_Worlds
