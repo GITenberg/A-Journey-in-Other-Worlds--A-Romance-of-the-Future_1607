@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: SZ7gA/eO439yYjwlJLZ+F541Hvv8QShpbxAfB+Ez9T9pfA61sLca4uGU3DjKXOyxHqvHFJAjYX/AvGBmVkfrM6kjEVt3cATdrhhllQrDGEyVtRDa8DN3pjGdQH/ryGzR1P6TxRaWhnPAex8CG4n482yKXL8f0Icfg13ezJjePmocCvM5zrsPRqMPGxus/N8qOzNGz1bG5deyCnQa4y+mRJClhebi32Jau8joBGkemuRaTq7jzbXr/wisyVAYwCyUM2bWPsh4BKPzbtCkbxcttpjEzzcbW8qjyEUMtiXT3fszUXnOYCKE62l6V/LdsXvlayIcQK0qs3X8vctrgJaiBGKand0nTU5Uj8juZGLY2n7AYRgcUMxoJKPtALIERtLOkrf9Ks+K0fVGaqhB3CWdcRyuyBH2Qf9CWWe+zu1vaz5CQhnD981KEYGBDojDEM3QwjjRAITxdSN7sR32E/tQqRbciaAZe2VEdeYMqad6yKN8U7GnoXG5hHqiT7+YcuKDq7pr9Ti2JKsEUTdYox8AK96koQVAXtXIeeRUSrxpQADdi4Ntg/YPmdSNNjL+cel7199KQPI31Y7KBgdO7O96gsDRJLiPtXL0kd58OWPmzgdarVlIwFbvbYcAHpsQWaNdQfIdySsycyaj5uYyP2I8ODIONBD2pg3e871wzAJ63GM=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/A-Journey-in-Other-Worlds--A-Romance-of-the-Future_1607
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
